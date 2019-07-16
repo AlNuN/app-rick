@@ -32,7 +32,7 @@ function fillBody(page){
         let divMedia = document.createElement('div')
         if (window.innerWidth > 768){
           divMedia.className = 'media'
-        } else{
+        } else {
           divMedia.className = 'media d-inline-block'
         }
   
@@ -78,6 +78,8 @@ function fillBody(page){
 
       ulPagination.innerHTML = ''
 
+      // First and previous pages
+
       let liFirst = document.createElement('li')
       liFirst.className = 'page-item'
       liFirst.innerHTML = '<a class="page-link" onclick="fillBody('+ 1 +')" tabindex="-1"><i class="fas fa-angle-double-left"></i><span class="sr-only">First</span> </a>'
@@ -98,7 +100,6 @@ function fillBody(page){
         liMinus2.className = 'page-item'
         ulPagination.appendChild(liMinus2)
       }
-
 
       if(page - 1 > 0){
         let liMinus1 = document.createElement('li')
@@ -127,7 +128,7 @@ function fillBody(page){
         ulPagination.appendChild(liPlus2)
       }
 
-      // /Numbered
+      // Next and last
 
       let liNext = document.createElement('li')
       liNext.className = 'page-item'
@@ -146,8 +147,7 @@ function fillBody(page){
 
 }
 
-
-  if(document.getElementById('lista').innerHTML == ''){
+if(document.getElementById('lista').innerHTML == ''){
     fillBody(1)
 } else {console.log('deu ruim')}
 
