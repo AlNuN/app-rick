@@ -1,6 +1,5 @@
 let request = new XMLHttpRequest()
 
-
 function fillBody(page){
 
   if(page < 1){
@@ -10,7 +9,7 @@ function fillBody(page){
 
   request.open('GET', 'https://rickandmortyapi.com/api/character/?page=' + page)
 
-  document.getElementById('lista').innerHTML = ''
+  document.getElementById('main').innerHTML = ''
 
   request.onreadystatechange = () => {
     if(request.readyState == 4 && request.status == 200){
@@ -22,54 +21,55 @@ function fillBody(page){
 
         let item = objJSON.results[i]
   
-        let ulHtml = document.getElementById('lista')
+        let content = document.getElementById('main')
   
         // Creating elements
   
-        let listItem = document.createElement('li')
-        listItem.className = 'list-group-item'
+        let charItem = document.createElement('section')
+        charItem.className = 'col-sm-4 mt-3 mb-3'
   
         let divMedia = document.createElement('div')
-        if (window.innerWidth > 768){
-          divMedia.className = 'media'
-        } else {
-          divMedia.className = 'media d-inline-block'
-        }
+        divMedia.className = 'card text-light text-left bg-dark'
+        // if (window.innerWidth > 768){
+        //   divMedia.className = 'media'
+        // } else {
+        //   divMedia.className = 'media d-inline-block'
+        // }
   
         let img = document.createElement('img')
-        img.className = 'align-self-center'
+        img.className = 'card-img-top'
         img.src = item.image
   
-        let divText = document.createElement('div')
-        divText.className = 'media-body ml-3 align-self-center'
-        divText.style = 'font-size: 1.2em'
+        let cardBody = document.createElement('div')
+        cardBody.className = 'card-body'
+        cardBody.style = 'font-size: 1.2em'
   
-        let div1 = document.createElement('div')
-        div1.innerHTML = 'Name: ' + item.name
+        let charName = document.createElement('p')
+        charName.innerHTML = 'Name: ' + item.name
         
-        let div2 = document.createElement('div')
-        div2.innerHTML = 'Id: ' + item.id
+        let charId = document.createElement('p')
+        charId.innerHTML = 'Id: ' + item.id
   
-        let div3 = document.createElement('div')
-        div3.innerHTML = 'Status: ' + item.status
+        let charStatus = document.createElement('p')
+        charStatus.innerHTML = 'Status: ' + item.status
   
-        let div4 = document.createElement('div')
-        div4.innerHTML = 'Species: ' + item.species
+        let charSpecies = document.createElement('p')
+        charSpecies.innerHTML = 'Species: ' + item.species
   
-        let div5 = document.createElement('div')
-        div5.innerHTML = 'Gender: ' + item.gender
+        let charGender = document.createElement('p')
+        charGender.innerHTML = 'Gender: ' + item.gender
   
   
         // Adding Elements
-        divText.appendChild(div1)
-        divText.appendChild(div2)
-        divText.appendChild(div3)
-        divText.appendChild(div4)
-        divText.appendChild(div5)
+        cardBody.appendChild(charName)
+        cardBody.appendChild(charId)
+        cardBody.appendChild(charStatus)
+        cardBody.appendChild(charSpecies)
+        cardBody.appendChild(charGender)
         divMedia.appendChild(img)
-        divMedia.appendChild(divText)
-        listItem.appendChild(divMedia)
-        ulHtml.appendChild(listItem)
+        divMedia.appendChild(cardBody)
+        charItem.appendChild(divMedia)
+        content.appendChild(charItem)
       }
 
     // Creating pagination buttons
@@ -147,7 +147,9 @@ function fillBody(page){
 
 }
 
-if(document.getElementById('lista').innerHTML == ''){
+if(document.getElementById('main').innerHTML == ''){
     fillBody(1)
-} else {console.log('deu ruim')}
+} else {
+    console.log('deu ruim')
+}
 

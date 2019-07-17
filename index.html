@@ -30,21 +30,23 @@
     <div class="container-fluid">
 
       <header class="row bg-dark">
-          <nav class="navbar navbar-expand navbar-dark col-10 offset-1">
+          <section class="navbar navbar-expand navbar-dark col-10 offset-sm-1">
               <a class="navbar-brand" href="#">
                 <h2>Rick and Morty <span class="d-md-inline d-none">Characters</span> List</h2>
               </a>
-          </nav>
+          </section>
       </header>
 
-      <main class="row text-light">
-        <section class="col-sm-10 offset-sm-1 mt-3">
-          <ul id="lista" class="list-group"></ul>
-        </section>
+      <main class="row">
+        <div class="container">
+          <div id="main" class="row"></div>
+        </div>
       </main>
       
       <!-- Pagination --> 
-      <ul id="paginator" class="pagination justify-content-center mt-2"></ul>
+      <nav class="mb-2 mt-2">
+        <ul id="paginator" class="pagination justify-content-center"></ul>
+      </nav>
 
     </div> 
 
@@ -65,4 +67,3 @@
   </body>
 
 </html>
-

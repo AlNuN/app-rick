@@ -5,10 +5,25 @@ html, body {
     font-size: 16px;
 }
 
-main {
+main, body {
     background-color: #4e4e4e;
 }
 
-.list-group-item {
+
+/* Pagination
+----------------------------------------------- */
+
+a.page-link {
     background-color: transparent;
+    color: #dee2e6;
+}
+
+a.page-link:hover{
+    color: #212529;
+}
+
+.page-item.active .page-link{
+    color: #212529;
+    background-color: #e9ecef;
+    border-color: #e9ecef;
 }
